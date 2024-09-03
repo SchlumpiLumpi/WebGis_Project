@@ -1,0 +1,66 @@
+extends layout
+
+block content
+  //MY FUNCTIONS
+  link(rel='stylesheet' href='./stylesheets/stylesheet.css')
+  script(defer src='./javascripts/getSaxony.js')
+  script(defer src='./javascripts/renderingPreviewMap.js')
+  script.
+    var pointsCollection = !{pointsCollection};
+    console.log("received data from DB:", pointsCollection)
+  //
+  .container-fluid.bg-primary
+  nav.navbar.navbar-expand-sm.bg-primary
+    a.navbar-brand(href='/') Project
+    button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarItems', aria-controls='navbarItems', aria-expanded='false', aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarItems.collapse.navbar-collapse
+      ul.navbar-nav.me-auto.mb-2.mb-lg-0
+        li.nav-item
+          a.nav-link.active(aria-current='page', href='/')
+            | Home
+            span.sr-only  (current)
+        li.nav-item
+          a.nav-link(href='/map') Map
+        li.nav-item
+          a.nav-link(href='/impressum') Impressum 
+  .container-fluid.row
+    .col-md-5
+      form#uploadForm(action='/uploadLocalFile', method='post', enctype='multipart/form-data')
+        .my-5
+          center
+            i.bi.bi-cloud-arrow-up.h2
+        .container-fluid.my-5
+          span
+            h6 Upload local JSON: 
+          input.form-control(type='file', name='file_upload')
+          button#submit_localfile.btn.btn-primary(type='submit', name='action', value='uploadLocalFile') Submit
+      .container-fluid.my-5
+        form#textForm(action='/uploadTextFile', method='post')
+          .form-group
+            label(for='text_input')
+              h6 JSON text input: 
+            textarea#text_input.form-control(name='json_input')
+          button#submit_text.btn.btn-primary(type='submit', name='action', value='uploadTextInput') Submit
+      .container-fluid.my-5
+        form#SinglePointForm(action='/uploadSinglePoint', method='post')
+          .input-group
+            span.input-group-text Lat/Lon
+            input.form-control(name='newPointLat', type='number', min='-90', max='90', step='0.001', placeholder='0°')
+            input.form-control(name='newPointLon', type='number', min='-180', max='180', step='0.001', placeholder='0°')
+          .input-group
+            span.input-group-text City Name
+            input.form-control(name='newPointName', type='text', placeholder='Dresden')
+          .input-group
+            span.input-group-text Wikipedia-URL (optional)
+            input.form-control(name='newPointImg', type='text', placeholder='https://de.wikipedia.org/wiki/Dresden')
+          button#submit_singlePoint.btn.btn-primary(type='submit', name='action', value='uploadSinglePoint') Submit
+    .col-md-7 
+      .container-fluid.my-3
+      #preview_map
+      form(action='/clearSelection' method="post")
+        input.btn.btn-primary(type='submit', name='action', value='Clear Selection')
+
+
+
+

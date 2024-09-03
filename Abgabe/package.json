@@ -1,0 +1,30 @@
+{
+  "name": "final-project",
+  "version": "0.0.0",
+  "moduleDirectories": [
+    "node-modules",
+    "public"
+  ],
+  "private": true,
+  "scripts": {
+    "start": "nodemon node ./bin/www"
+  },
+  "dependencies": {
+    "@turf/boolean-point-in-polygon": "^7.1.0",
+    "@turf/helpers": "^7.1.0",
+    "@turf/points-within-polygon": "^7.1.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-validator": "^7.2.0",
+    "fs": "^0.0.1-security",
+    "http-errors": "~1.6.3",
+    "mongodb": "^6.8.0",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.5-lts.1",
+    "pug": "2.0.0-beta11",
+    "turf": "^3.0.14",
+    "util": "^0.12.5"
+  }
+}

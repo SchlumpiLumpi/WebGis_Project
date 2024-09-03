@@ -1,0 +1,15 @@
+#preview_map{
+    height: 600px;
+  }
+#map{
+    height: 700px;
+  }
+
+#wikiContent{
+  height:400px;
+  overflow-y: scroll;
+}
+#forecastChart
+{
+  background: #ffffff;
+}
